@@ -24,6 +24,11 @@ pipeline {
             }
         }
         stage('Deliver') { 
+            agent {
+                docker {
+                    image 'openjdk:11'
+                }
+            }
             steps {
                 echo 'devlvering code' 
             }
