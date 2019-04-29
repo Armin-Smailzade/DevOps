@@ -10,8 +10,6 @@ public class App {
 
     public static void main( String[] args ){
 
-        Deque<String> testQueue = new LinkedList<String>();
-
-        System.out.println( "Test" );
+        System.out.println( "JenkinsTest!" );
     }
 }
