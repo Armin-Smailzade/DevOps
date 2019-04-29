@@ -20,10 +20,16 @@ pipeline {
                 sh 'mvn test' 
             }
         }
-        stage('Run') { 
+        stage('Install') { 
             
             steps {
                 sh 'mvn install' 
+            }
+        }
+        stage('Run') { 
+            
+            steps {
+                sh 'java -jar ./target/my-app-1.0-SNAPSHOT.jar' 
             }
         }
     }
