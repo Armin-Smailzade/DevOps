@@ -23,14 +23,14 @@ pipeline {
                 sh 'mvn test' 
             }
         }
-        stage('Deliver') { 
+        stage('Run') { 
             agent {
                 docker {
                     image 'openjdk:11'
                 }
             }
             steps {
-                echo 'devlvering code' 
+                sh 'mvn install' 
             }
         }
     }
