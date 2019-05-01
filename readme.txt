@@ -26,7 +26,10 @@ sudo vi ./Dockerfile
 	Esc key
 	:wq -> enter
 
-docker build -f Dockerfile[filePath] -p 8081:8080 -t demo/oracle-java:latest[name:tag] .[]context
+docker build -f Dockerfile[filePath] -t demo/oracle-java:latest[name:tag] .[context]
+
+-p 8081:8080
+
 
 docker image ls
 docker run demo/oracle-java
@@ -52,7 +55,10 @@ docker run \
   -v jenkins-data:/var/jenkins_home \ 
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v "$HOME":/home \ 
+  --name jenkins-server
   jenkinsci/blueocean
+
+docker run --rm -u root -p 8080:8080 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v "$HOME":/home --name jenkins-server jenkinsci/blueocean
 
 docker run ^
   --rm ^
