@@ -6,6 +6,19 @@ sudo apt install -y maven
 
 mvn archetype:generate -DgroupId=com.c1b.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 
+=============== gradle
+wget https://services.gradle.org/distributions/gradle-5.4.1-bin.zip -P /tmp
+sudo unzip -d /opt/gradle /tmp/gradle-*.zip
+ls /opt/gradle/gradle-5.4.1
+sudo nano /etc/profile.d/gradle.sh
+  export GRADLE_HOME=/opt/gradle/gradle-5.4.1
+  export PATH=${GRADLE_HOME}/bin:${PATH}
+sudo chmod +x /etc/profile.d/gradle.sh
+source /etc/profile.d/gradle.sh
+
+sudo chown -R cloud_user:cloud_user /home/cloud_user/my-project/
+
+
 =============== Docker
 sudo apt install -y docker.io
 service docker start
@@ -38,11 +51,31 @@ docker stop demo/oracle-java
 docker restart demo/oracle-java
 docker rm demo/oracle-java
 
+gcr.io/spring-boot-gke-239421/kayak-app:1.0
+
+docker build -t kayak-app:1.0 .
+docker tag kayak-app:1.0 gcr.io/spring-boot-gke-239421/kayak-app:1.0;
+docker push gcr.io/spring-boot-gke-239421/kayak-app:1.0
+
+
 =============== Git
 git add .
 git commit -m ""
 git remote add origin remote repository URL
 git remote -v
+git push -u origin master
+
+
+====> create a new repository on the command line
+echo "# springbootkbe" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/Armin-Smailzade/springbootkbe.git
+git push -u origin master
+
+====> push an existing repository from the command line
+git remote add origin https://github.com/Armin-Smailzade/springbootkbe.git
 git push -u origin master
 
 
