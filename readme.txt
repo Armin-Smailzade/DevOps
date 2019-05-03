@@ -18,6 +18,7 @@ source /etc/profile.d/gradle.sh
 
 sudo chown -R cloud_user:cloud_user /home/cloud_user/my-project/
 
+sudo chown -R armin.emsaeilzadeh:armin.emsaeilzadeh /home/armin.emsaeilzadeh/okta-spring-boot-microservice-kubernetes/
 
 =============== Docker
 sudo apt install -y docker.io
@@ -170,7 +171,7 @@ https://istio.io/docs/concepts/what-is-istio/
 
 https://developer.okta.com/blog/2019/04/01/spring-boot-microservices-with-kubernetes
 
-
+https://supergiant.io/blog/kubernetes-networking-explained-introduction/
 
 
 
