@@ -58,6 +58,28 @@ docker build -t kayak-app:1.0 .
 docker tag kayak-app:1.0 gcr.io/spring-boot-gke-239421/kayak-app:1.0;
 docker push gcr.io/spring-boot-gke-239421/kayak-app:1.0
 
+========
+https://www.digitalocean.com/community/tutorials/how-to-run-nginx-in-a-docker-container-on-ubuntu-14-04
+
+mkdir -p ~/docker-nginx/html
+cd ~/docker-nginx/html
+vim index.html
+
+<html>
+  <head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <title>Docker nginx Tutorial</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Hello Digital Ocean</h1>
+      <p>This nginx page is brought to you by Docker and Digital Ocean</p>
+    </div>
+  </body>
+</html>
+
+sudo docker run --name docker-nginx -p 80:80 -d -v ~/docker-nginx/html:/usr/share/nginx/html nginx
+
 
 =============== Git
 git add .
