@@ -81,6 +81,11 @@ vim index.html
 sudo docker run --name docker-nginx -p 80:80 -d -v ~/docker-nginx/html:/usr/share/nginx/html nginx
 
 
+=============== Redis - Docker
+
+docker run --name my-redis -d redis
+docker run -it --link my-redis:redis redis redis-cli -h redis -p 6379
+
 =============== Git
 git add .
 git commit -m ""
@@ -143,6 +148,73 @@ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
 echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
 sudo apt-get update
 sudo apt-get install -y kubectl
+
+
+============================================= Linux
+
+// header information, silence body 
+curl -I -s https://opensource.com 
+
+cat test.json | python -m json.tool
+
+ls -l 
+
+// follow
+tail -f /var/log/httpd/access_log 
+// n=100
+tail -n 100 /var/log/httpd/access_log 
+
+cat tomcat.log | grep org.apache.catalina.startup.Catalina.start
+
+//shows process status
+ps -ef | grep tomcat 
+
+env
+
+//sorted process information
+top
+
+// network ports in use and their incoming connections
+netstat 
+
+// shows the interfaces and IP addresses of your application's host
+ip address
+
+// lists the open files associated with your application
+//any interaction with the system is treated like a file
+lsof -i tcp:80
+lsof -p 18311
+
+//display free disk space
+df -h
+du -sh /var/log/*    //total Size , Human readable
+
+// user identity
+id 
+
+//permission. -x adds executing to the permissions
+chmod -x test.sh
+ls -l 
+
+//query internet name servers
+nslookup mydatabase
+dig mydatabase
+
+
+//blocks or allows traffic on a Linux host
+iptables -S
+
+//provides least-privilege access to processes running on the host
+sestatus // see if it is enabled
+
+history
+
+
+============================================= NoSQL
+https://www.kdnuggets.com/2018/08/dynamodb-vs-cassandra.html
+https://aws.amazon.com/blogs/big-data/best-practices-for-running-apache-cassandra-on-amazon-ec2/
+
+
 
 ============================================= Links
 https://www.baeldung.com/spring-cloud-bootstrapping
