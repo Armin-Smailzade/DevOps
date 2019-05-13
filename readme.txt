@@ -33,6 +33,11 @@ sudo su
 passwd ubuntu
 27646@Leo
 
+==== Docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+====
 
 sudo touch ./Dockerfile
 sudo vi ./Dockerfile
@@ -58,7 +63,35 @@ docker build -t kayak-app:1.0 .
 docker tag kayak-app:1.0 gcr.io/spring-boot-gke-239421/kayak-app:1.0;
 docker push gcr.io/spring-boot-gke-239421/kayak-app:1.0
 
-========
+=============== Docker Logs
+
+docker-compose logs rabbit
+docker-compose logs --tail 5 rabbit
+
+=============== Docker clean
+
+docker system prune
+
+docker system prune --volumes
+
+docker container ls -a --filter status=exited --filter status=created 
+
+docker container prune
+docker container prune --filter "until=12h"
+
+docker container stop $(docker container ls -aq)
+docker container rm $(docker container ls -aq)
+
+docker image prune
+docker image prune -a
+docker image prune -a --filter "until=12h"
+
+docker volume prune
+docker network prune
+
+docker network prune -a --filter "until=12h"
+
+======== NginX
 https://www.digitalocean.com/community/tutorials/how-to-run-nginx-in-a-docker-container-on-ubuntu-14-04
 
 mkdir -p ~/docker-nginx/html
@@ -149,6 +182,11 @@ echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/
 sudo apt-get update
 sudo apt-get install -y kubectl
 
+=========== AWS
+apt-get install awscli
+
+curl -s http://169.254.169.254/latest/meta-data/
+
 
 ============================================= Linux
 
@@ -187,6 +225,7 @@ lsof -p 18311
 
 //display free disk space
 df -h
+df -i
 du -sh /var/log/*    //total Size , Human readable
 
 // user identity
