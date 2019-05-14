@@ -68,6 +68,15 @@ docker push gcr.io/spring-boot-gke-239421/kayak-app:1.0
 docker-compose logs rabbit
 docker-compose logs --tail 5 rabbit
 
+docker-compose logs -t   
+
+docker logs -t --since 2018-03-03T16:52:45.000996884Z --until 2018-03-03T16:52:45.001996884Z docker_rabbit_1
+
+docker logs -t --tail 10 docker_rabbit_1 | grep info
+
+docker logs -t --tail 10 docker_rabbit_1 | grep info >> my_log_file.txt
+
+
 =============== Docker clean
 
 docker system prune
