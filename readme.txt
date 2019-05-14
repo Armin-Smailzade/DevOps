@@ -128,6 +128,12 @@ sudo docker run --name docker-nginx -p 80:80 -d -v ~/docker-nginx/html:/usr/shar
 docker run --name my-redis -d redis
 docker run -it --link my-redis:redis redis redis-cli -h redis -p 6379
 
+
+
+=============== Redis
+https://www.concretepage.com/spring-boot/spring-boot-redis
+https://www.journaldev.com/18141/spring-boot-redis-cache
+
 =============== Git
 git add .
 git commit -m ""
@@ -147,6 +153,14 @@ git push -u origin master
 ====> push an existing repository from the command line
 git remote add origin https://github.com/Armin-Smailzade/springbootkbe.git
 git push -u origin master
+
+
+====> create branch 
+git branch <feature_branch>
+git checkout <feature_branch>
+git add .
+git commit -m "adding a change from the feature branch"
+git push origin <feature_branch>
 
 
 ==================== Jenkins
