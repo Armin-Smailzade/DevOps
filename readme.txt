@@ -1,12 +1,40 @@
-=============== java 11
+============================== Git
+git add .
+git commit -m ""
+git remote add origin remote repository URL
+git remote -v
+git push -u origin master
+
+
+====> create a new repository on the command line
+echo "# springbootkbe" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/Armin-Smailzade/springbootkbe.git
+git push -u origin master
+
+====> push an existing repository from the command line
+git remote add origin https://github.com/Armin-Smailzade/springbootkbe.git
+git push -u origin master
+
+
+====> create branch 
+git branch <feature_branch>
+git checkout <feature_branch>
+git add .
+git commit -m "adding a change from the feature branch"
+git push origin <feature_branch>
+
+============================== java 11
 sudo apt install -y openjdk-11-jdk
 
-=============== maven
+============================== maven
 sudo apt install -y maven
 
 mvn archetype:generate -DgroupId=com.c1b.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 
-=============== gradle
+============================== gradle
 wget https://services.gradle.org/distributions/gradle-5.4.1-bin.zip -P /tmp
 sudo unzip -d /opt/gradle /tmp/gradle-*.zip
 ls /opt/gradle/gradle-5.4.1
@@ -20,7 +48,7 @@ sudo chown -R cloud_user:cloud_user /home/cloud_user/my-project/
 
 sudo chown -R armin.emsaeilzadeh:armin.emsaeilzadeh /home/armin.emsaeilzadeh/okta-spring-boot-microservice-kubernetes/
 
-=============== Docker
+============================== Docker
 sudo apt install -y docker.io
 service docker start
 docker info
@@ -100,7 +128,7 @@ docker network prune
 
 docker network prune -a --filter "until=12h"
 
-======== NginX
+============================== NginX
 https://www.digitalocean.com/community/tutorials/how-to-run-nginx-in-a-docker-container-on-ubuntu-14-04
 
 mkdir -p ~/docker-nginx/html
@@ -128,42 +156,34 @@ sudo docker run --name docker-nginx -p 80:80 -d -v ~/docker-nginx/html:/usr/shar
 docker run --name my-redis -d redis
 docker run -it --link my-redis:redis redis redis-cli -h redis -p 6379
 
-
-
-=============== Redis
+============================== Redis
 https://www.concretepage.com/spring-boot/spring-boot-redis
 https://www.journaldev.com/18141/spring-boot-redis-cache
 
-=============== Git
-git add .
-git commit -m ""
-git remote add origin remote repository URL
-git remote -v
-git push -u origin master
+https://piotrminkowski.wordpress.com/2019/03/18/redis-in-microservices-architecture/
+1- messeging
+2- config server
+3- persistent
+
+Redis Cluster
+https://redis.io/topics/partitioning
 
 
-====> create a new repository on the command line
-echo "# springbootkbe" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin https://github.com/Armin-Smailzade/springbootkbe.git
-git push -u origin master
-
-====> push an existing repository from the command line
-git remote add origin https://github.com/Armin-Smailzade/springbootkbe.git
-git push -u origin master
+https://dzone.com/articles/3-ways-to-use-redis-hash-in-java
+- jedis.hget(name, keyArray); //only takes byte arrays
+- RedisTemplate<String,Object> //provide serialize deserialize impl
+- Redisson
 
 
-====> create branch 
-git branch <feature_branch>
-git checkout <feature_branch>
-git add .
-git commit -m "adding a change from the feature branch"
-git push origin <feature_branch>
+============================== Kafka
+https://docs.confluent.io/current/quickstart/ce-docker-quickstart.html
 
 
-==================== Jenkins
+============================== Cassandra
+
+
+
+============================== Jenkins
 
 docker run \
   --rm \
@@ -198,20 +218,20 @@ http://192.168.99.100:9091/
 docker exec -it jenkins-server bash
 
 
-=========== Kubectl
+============================== Kubectl
 sudo apt-get update && sudo apt-get install -y apt-transport-https
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
 sudo apt-get update
 sudo apt-get install -y kubectl
 
-=========== AWS
+============================== AWS
 apt-get install awscli
 
 curl -s http://169.254.169.254/latest/meta-data/
 
 
-============================================= Linux
+============================== Linux
 
 // header information, silence body 
 curl -I -s https://opensource.com 
