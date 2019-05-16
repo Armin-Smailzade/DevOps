@@ -173,7 +173,7 @@ https://dzone.com/articles/3-ways-to-use-redis-hash-in-java
 - jedis.hget(name, keyArray); //only takes byte arrays
 - RedisTemplate<String,Object> //provide serialize deserialize impl
 - Redisson
-
+- @Cashable
 
 ============================== Kafka
 https://docs.confluent.io/current/quickstart/ce-docker-quickstart.html
