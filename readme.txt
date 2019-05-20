@@ -49,6 +49,8 @@ sudo chown -R cloud_user:cloud_user /home/cloud_user/my-project/
 sudo chown -R armin.emsaeilzadeh:armin.emsaeilzadeh /home/armin.emsaeilzadeh/okta-spring-boot-microservice-kubernetes/
 
 ============================== Docker
+https://gist.github.com/LeCoupa/f975e330551508ffd598a0d4bc4bed38
+
 sudo apt install -y docker.io
 service docker start
 docker info
@@ -153,12 +155,13 @@ sudo docker run --name docker-nginx -p 80:80 -d -v ~/docker-nginx/html:/usr/shar
 
 =============== Redis - Docker
 
-docker run --name my-redis -d redis
+docker run --name my-redis -p 6379:6379 -d redis
 docker run -it --link my-redis:redis redis redis-cli -h redis -p 6379
 
 ============================== Redis
 https://www.concretepage.com/spring-boot/spring-boot-redis
 https://www.journaldev.com/18141/spring-boot-redis-cache
+https://logz.io/blog/kafka-vs-redis/
 
 https://piotrminkowski.wordpress.com/2019/03/18/redis-in-microservices-architecture/
 1- messeging
@@ -175,11 +178,44 @@ https://dzone.com/articles/3-ways-to-use-redis-hash-in-java
 - Redisson
 - @Cashable
 
+
+============= Commands
+https://gist.github.com/LeCoupa/1596b8f359ad8812c7271b5322c30946
+
+
+redis-cli
+redis-cli INFO | grep conected
+CONFIG GET *
+CONFIG SET timeout 900
+
+redis-cli INFO | grep ^db \\separated namespaces called "databases"
+select 1
+FLUSHDB
+FLUSHALL
+
+INFO | grep role
+
+SLAVEOF <IP> <port> \\quickly need to set up replication. run on slave machine
+
+CLIENT LIST
+CLIENT KILL <IP>:<port>
+
+MONITOR
+
+KEYS test*
+
 ============================== Kafka
 https://docs.confluent.io/current/quickstart/ce-docker-quickstart.html
-
+https://www.confluent.io/blog/apache-kafka-spring-boot-application
+https://github.com/igorkosandyak/spring-boot-kafka
+https://www.baeldung.com/spring-kafka
+https://github.com/eugenp/tutorials/tree/master/spring-kafka
 
 ============================== Cassandra
+
+
+============================== MySQL
+
 
 
 
@@ -224,6 +260,17 @@ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
 echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
 sudo apt-get update
 sudo apt-get install -y kubectl
+
+============================== Config Server 
+
+spring boot
+https://medium.com/design-and-tech-co/creating-a-configuration-microservice-using-spring-cloud-config-800d08fa596a
+
+
+
+
+============================== Bash
+https://gist.github.com/LeCoupa/122b12050f5fb267e75f
 
 ============================== AWS
 apt-get install awscli
